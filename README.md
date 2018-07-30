@@ -5,9 +5,6 @@ The Pitch Perfect app is result of Udacity's iOS Developer Nanodegree course.
 
 The App allows users to Record a sound using the Device’s Microphone. It then Allows Users to Play the Recorded Sound back with six different Sound Modulations.
 
-Basic features Based on the criteria found in here: 
-- [PROJECT SPECIFICATION - Pitch Perfect](https://review.udacity.com/#!/rubrics/19/view)
-
 ## Implementation
 Pitch Perfect has two Scenes: 
 - **RecordSoundsViewController** : consists a record button with a microphone image. Tapping this microphone button starts an audio recording session and present a stop button. When the stop button is clicked, the app completes recording and then show the PlaySound controller.
