@@ -1,5 +1,5 @@
-# Pitch-Perfect
-### iOS Developer Nano Degree Project
+# Pitch Perfect
+### iOS Developer Nanodegree Project
 
 The Pitch Perfect app is result of Udacity's iOS Developer Nanodegree course.
 
