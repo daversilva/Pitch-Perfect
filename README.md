@@ -5,7 +5,7 @@ The Pitch Perfect app is result of Udacity's iOS Developer Nanodegree course.
 
 The App allows users to Record a sound using the Device’s Microphone. It then Allows Users to Play the Recorded Sound back with six different Sound Modulations.
 
-![](pitch-perfect-iPhoneX-portrait.gif) 
+![](GIFs/pitch-perfect-iPhoneX-portrait.gif) 
 
 ## Implementation
 Pitch Perfect has two Scenes: 
