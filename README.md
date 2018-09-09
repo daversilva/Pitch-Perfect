@@ -7,8 +7,6 @@ The App allows users to Record a sound using the Device’s Microphone. It then 
 
 ![](pitch-perfect-iPhoneX-portrait.gif) 
 
-![](pitch-perfect-iPhoneX-landscape.gif)
-
 ## Implementation
 Pitch Perfect has two Scenes: 
 - **RecordSoundsViewController** : consists a record button with a microphone image.
