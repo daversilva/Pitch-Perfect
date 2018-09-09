@@ -11,22 +11,24 @@ import AVFoundation
 
 class RecordSoundsViewController: UIViewController {
     
-    var audioRecorder: AVAudioRecorder!
+    // MARK: Outlets
     
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var btnStarRecording: UIButton!
     @IBOutlet weak var btnStopRecording: UIButton!
+    
+    // MARK: Variables
+    
+    var audioRecorder: AVAudioRecorder!
+    
+    // MARK: Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI(true)
     }
     
-    func configureUI(_ isRecording: Bool) {
-        recordingLabel.text = isRecording ? "Tap to Record" : "Recoding in progress"
-        btnStarRecording.isEnabled = isRecording
-        btnStopRecording.isEnabled = !isRecording
-    }
+    // MARK: Actions
 
     @IBAction func recordAudio(_ sender: UIButton) {
         configureUI(false)
@@ -54,12 +56,23 @@ class RecordSoundsViewController: UIViewController {
         try! audioSession.setActive(false)
     }
     
+}
+
+extension RecordSoundsViewController {
+    // MARK: Methods
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "stopRecording" {
             let playSoundsVC = segue.destination as! PlaySoundsViewController
             let recordedAudioURL = sender as! URL
             playSoundsVC.recordedAudioURL = recordedAudioURL
         }
+    }
+    
+    func configureUI(_ isRecording: Bool) {
+        recordingLabel.text = isRecording ? "Tap to Record" : "Recoding in progress"
+        btnStarRecording.isEnabled = isRecording
+        btnStopRecording.isEnabled = !isRecording
     }
 }
 
