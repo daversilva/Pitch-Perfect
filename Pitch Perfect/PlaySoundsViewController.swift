@@ -8,11 +8,12 @@
 
 import UIKit
 import AVFoundation
+import RxSwift
+import RxCocoa
 
 class PlaySoundsViewController: UIViewController {
     
     // MARK: Outlets
-    
     @IBOutlet weak var snailButton: UIButton!
     @IBOutlet weak var chipmunkButton: UIButton!
     @IBOutlet weak var rabbitButton: UIButton!
@@ -22,30 +23,31 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var stopButton: UIButton!
     
     // MARK: Variables
-    
     var recordedAudioURL:URL!
     var audioFile:AVAudioFile!
     var audioEngine:AVAudioEngine!
     var audioPlayerNode: AVAudioPlayerNode!
     var stopTimer: Timer!
     
+    let disposeBag = DisposeBag()
+    var isPlayButtonTaped = BehaviorRelay<Bool>(value: false)
+    
     enum ButtonType: Int { case slow = 0, fast, chipmunk, vader, echo, reverb }
     
     // MARK: Life cycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
         setupAudio()
-        buttonContentMode()
+        bindViews()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureUI(.notPlaying)
+        isPlayButtonTaped.accept(false)
     }
     
     // MARK: Actions
-    
     @IBAction func playSoundForButton(_ sender: UIButton) {
         switch(ButtonType(rawValue: sender.tag)!) {
             case .slow:
@@ -62,26 +64,7 @@ class PlaySoundsViewController: UIViewController {
                 playSound(reverb: true)
         }
         
-        configureUI(.playing)
+        isPlayButtonTaped.accept(true)
     }
-    
-    @IBAction func stopButtonPressed(_ sender: AnyObject) {
-        stopAudio()
-    }
-}
 
-extension PlaySoundsViewController {
-    
-    // MARK: Methods
-    
-    func buttonContentMode() {
-        snailButton.imageView?.contentMode = .scaleAspectFit
-        chipmunkButton.imageView?.contentMode = .scaleAspectFit
-        rabbitButton.imageView?.contentMode = .scaleAspectFit
-        vaderButton.imageView?.contentMode = .scaleAspectFit
-        echoButton.imageView?.contentMode = .scaleAspectFit
-        reverbButton.imageView?.contentMode = .scaleAspectFit
-        stopButton.imageView?.contentMode = .scaleAspectFit
-    }
-    
 }

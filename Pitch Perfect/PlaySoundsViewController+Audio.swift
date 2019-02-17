@@ -7,13 +7,14 @@
 
 import UIKit
 import AVFoundation
+import RxSwift
+import RxCocoa
 
 // MARK: - PlaySoundsViewController: AVAudioPlayerDelegate
 
 extension PlaySoundsViewController: AVAudioPlayerDelegate {
     
     // MARK: Alerts
-    
     struct Alerts {
         static let DismissAlert = "Dismiss"
         static let RecordingDisabledTitle = "Recording Disabled"
@@ -28,11 +29,9 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
     }
     
     // MARK: PlayingState (raw values correspond to sender tags)
-    
     enum PlayingState { case playing, notPlaying }
     
     // MARK: Audio Functions
-    
     func setupAudio() {
         // initialize (recording) audio file
         do {
@@ -115,17 +114,17 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
     }
     
     @objc func stopAudio() {
-        
+
         if let audioPlayerNode = audioPlayerNode {
             audioPlayerNode.stop()
         }
-        
+
         if let stopTimer = stopTimer {
             stopTimer.invalidate()
         }
-        
-        configureUI(.notPlaying)
-                        
+
+        isPlayButtonTaped.accept(false)
+
         if let audioEngine = audioEngine {
             audioEngine.stop()
             audioEngine.reset()
@@ -141,30 +140,34 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
     }
     
     // MARK: UI Functions
-
-    func configureUI(_ playState: PlayingState) {
-        switch(playState) {
-        case .playing:
-            setPlayButtonsEnabled(false)
-            stopButton.isEnabled = true
-        case .notPlaying:
-            setPlayButtonsEnabled(true)
-            stopButton.isEnabled = false
-        }
-    }
-    
-    func setPlayButtonsEnabled(_ enabled: Bool) {
-        snailButton.isEnabled = enabled
-        chipmunkButton.isEnabled = enabled
-        rabbitButton.isEnabled = enabled
-        vaderButton.isEnabled = enabled
-        echoButton.isEnabled = enabled
-        reverbButton.isEnabled = enabled
-    }
-
     func showAlert(_ title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Alerts.DismissAlert, style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+}
+
+// MARK: - Setups
+extension PlaySoundsViewController {
+    
+    public func setupViews() {
+        [snailButton, chipmunkButton, rabbitButton, vaderButton, echoButton, reverbButton, stopButton]
+            .compactMap {$0}
+            .forEach { $0.imageView?.contentMode = .scaleAspectFit }
+    }
+    
+    public func bindViews() {
+        
+        isPlayButtonTaped.bind { [weak self] isTapped in
+            self?.stopButton.isEnabled = isTapped
+            [self?.snailButton, self?.chipmunkButton, self?.rabbitButton, self?.vaderButton, self?.echoButton, self?.reverbButton]
+                .compactMap { $0 }
+                .forEach { $0.isEnabled = !isTapped }
+        }.disposed(by: disposeBag)
+        
+        stopButton.rx.tap.bind { [weak self] in
+            self?.stopAudio()
+        }.disposed(by: disposeBag)
+    }
+    
 }

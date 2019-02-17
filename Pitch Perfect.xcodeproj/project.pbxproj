@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B81724F0BED40D69111270FE /* Pods_Pitch_Perfect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24B9EBEE032B4D45DEB83231 /* Pods_Pitch_Perfect.framework */; };
 		BCB65ECA20E5AFFB00DF92F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB65EC920E5AFFB00DF92F4 /* AppDelegate.swift */; };
 		BCB65ECC20E5AFFB00DF92F4 /* RecordSoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB65ECB20E5AFFB00DF92F4 /* RecordSoundsViewController.swift */; };
 		BCB65ECF20E5AFFB00DF92F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB65ECD20E5AFFB00DF92F4 /* Main.storyboard */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24B9EBEE032B4D45DEB83231 /* Pods_Pitch_Perfect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pitch_Perfect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		251E6B7CCBBE5AE87D436590 /* Pods-Pitch Perfect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitch Perfect.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pitch Perfect/Pods-Pitch Perfect.release.xcconfig"; sourceTree = "<group>"; };
 		BCB65EC620E5AFFB00DF92F4 /* Pitch Perfect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pitch Perfect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB65EC920E5AFFB00DF92F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCB65ECB20E5AFFB00DF92F4 /* RecordSoundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSoundsViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		BCB65ED520E5AFFD00DF92F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCB65EDB20E5C16400DF92F4 /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
 		BCB65EDD20E5DAD900DF92F4 /* PlaySoundsViewController+Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlaySoundsViewController+Audio.swift"; sourceTree = "<group>"; };
+		D633DE0846641ECC228DA988 /* Pods-Pitch Perfect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pitch Perfect.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pitch Perfect/Pods-Pitch Perfect.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B81724F0BED40D69111270FE /* Pods_Pitch_Perfect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		69EB7586AEBE9EB173949045 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D633DE0846641ECC228DA988 /* Pods-Pitch Perfect.debug.xcconfig */,
+				251E6B7CCBBE5AE87D436590 /* Pods-Pitch Perfect.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BCB65EBD20E5AFFB00DF92F4 = {
 			isa = PBXGroup;
 			children = (
 				BCB65EC820E5AFFB00DF92F4 /* Pitch Perfect */,
 				BCB65EC720E5AFFB00DF92F4 /* Products */,
+				69EB7586AEBE9EB173949045 /* Pods */,
+				E541CBC3A20E4F4E81AB33EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +86,14 @@
 			path = "Pitch Perfect";
 			sourceTree = "<group>";
 		};
+		E541CBC3A20E4F4E81AB33EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24B9EBEE032B4D45DEB83231 /* Pods_Pitch_Perfect.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +101,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCB65ED820E5AFFD00DF92F4 /* Build configuration list for PBXNativeTarget "Pitch Perfect" */;
 			buildPhases = (
+				DF6F644D3BA4B45F16B8052B /* [CP] Check Pods Manifest.lock */,
 				BCB65EC220E5AFFB00DF92F4 /* Sources */,
 				BCB65EC320E5AFFB00DF92F4 /* Frameworks */,
 				BCB65EC420E5AFFB00DF92F4 /* Resources */,
+				333D8AFF8C50A8D4C6114574 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +161,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		333D8AFF8C50A8D4C6114574 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Pitch Perfect/Pods-Pitch Perfect-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pitch Perfect/Pods-Pitch Perfect-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF6F644D3BA4B45F16B8052B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pitch Perfect-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BCB65EC220E5AFFB00DF92F4 /* Sources */ = {
@@ -286,6 +363,7 @@
 		};
 		BCB65ED920E5AFFD00DF92F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D633DE0846641ECC228DA988 /* Pods-Pitch Perfect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +382,7 @@
 		};
 		BCB65EDA20E5AFFD00DF92F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 251E6B7CCBBE5AE87D436590 /* Pods-Pitch Perfect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
